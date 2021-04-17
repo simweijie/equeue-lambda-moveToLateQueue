@@ -26,7 +26,7 @@ logger.info("SUCCESS: Connection to RDS MySQL instance succeeded")
 def handler(event, context):
     cur = connection.cursor()  
 ## Retrieve Data
-    query = "SELECT * FROM Clinic"    
+    query = "UPDATE Queue SET status='M' WHERE status='Q'"    
     cur.execute(query)
     connection.commit()
 ## Construct body of the response object
