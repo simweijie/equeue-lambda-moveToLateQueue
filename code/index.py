@@ -31,14 +31,14 @@ def handler(event, context):
     connection.commit()
 ## Construct body of the response object
     
-    clinicList = []
+    output = []
     rows = cur.fetchall()
     for row in rows:
         print("TEST {0} {1}".format(row[0],row[1]))
         transactionResponse = {}
-        transactionResponse['id'] = row[0]
-        transactionResponse['name'] = row[1]
-        clinicList.append(transactionResponse)
+#         transactionResponse['id'] = row[0]
+#         transactionResponse['name'] = row[1]
+        output.append(transactionResponse)
 
 # Construct http response object
     responseObject = {}
@@ -46,7 +46,7 @@ def handler(event, context):
     #responseObject['headers'] = {}
     #responseObject['headers']['Content-Type']='application/json'
     #responseObject['headers']['Access-Control-Allow-Origin']='*'
-    responseObject['data']= clinicList
+    responseObject['data']= output
     # responseObject['body'] = json.dumps(transactionResponse, sort_keys=True,default=str)
     
     #k = json.loads(responseObject['body'])
